@@ -30,14 +30,13 @@
 - (void)setupViews {
 
 	UIColor *colorWhite = [UIColor whiteColor];
-	self.view.backgroundColor = [UIColor grayColor];
-	
+	self.view.backgroundColor = colorWhite;
+
 	// Username
 	self.usernameTextField = [[UITextField alloc] init];
 	self.usernameTextField.translatesAutoresizingMaskIntoConstraints = NO;
 	self.usernameTextField.borderStyle = UITextBorderStyleNone;
 	self.usernameTextField.backgroundColor = [UIColor grayColor];
-	self.usernameTextField.placeholder = @"Username";
 	self.usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
 	[self.view addSubview:self.usernameTextField];
@@ -48,7 +47,6 @@
 	self.passwordTextField.borderStyle = UITextBorderStyleNone;
 	self.passwordTextField.backgroundColor = [UIColor grayColor];
 	self.passwordTextField.secureTextEntry = YES;
-	self.passwordTextField.placeholder = @"Password";
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
 	[self.view addSubview:self.passwordTextField];
