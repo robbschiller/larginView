@@ -6,3 +6,5 @@ Learning
 - Autolayout
   - programmatic syntax
   - "nearest" positioning
+- Storyboardlessness
+  - windowFrame, mainScreen

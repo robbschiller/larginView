@@ -29,24 +29,30 @@
 
 - (void)setupViews {
 
-	self.view.backgroundColor = [UIColor whiteColor];
-	
-	// Username
+	UIColor *colorWhite = [UIColor whiteColor];
+	UIColor *colorBlack = [UIColor blackColor];
+	self.view.backgroundColor = colorBlack;
+
+	// Username Text Field
 	self.usernameTextField = [[UITextField alloc] init];
 	self.usernameTextField.translatesAutoresizingMaskIntoConstraints = NO;
 	self.usernameTextField.borderStyle = UITextBorderStyleNone;
-	self.usernameTextField.backgroundColor = [UIColor grayColor];
-	self.usernameTextField.placeholder = @"username";
+	self.usernameTextField.textColor = colorWhite;
+	self.usernameTextField.tag = 1;
+	self.usernameTextField.returnKeyType = UIReturnKeyNext;
+	self.usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
 	[self.view addSubview:self.usernameTextField];
 	
-	// Password
+	// Password Text Field
 	self.passwordTextField = [[UITextField alloc] init];
 	self.passwordTextField.translatesAutoresizingMaskIntoConstraints = NO;
 	self.passwordTextField.borderStyle = UITextBorderStyleNone;
-	self.passwordTextField.backgroundColor = [UIColor grayColor];
+	self.passwordTextField.textColor = colorWhite;
 	self.passwordTextField.secureTextEntry = YES;
-	self.passwordTextField.placeholder = @"password";
+	self.passwordTextField.tag = 2;
+	self.passwordTextField.returnKeyType = UIReturnKeyDone;
+	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
 	[self.view addSubview:self.passwordTextField];
 	
@@ -54,10 +60,21 @@
 	self.loginButton = [[UIButton alloc] init];
 	self.loginButton.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
-	self.loginButton.backgroundColor = [UIColor grayColor];
-	
+
 	[self.view addSubview:self.loginButton];
 	
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+
+	if (textField.returnKeyType == UIReturnKeyNext) {
+		UIView *next = [[textField superview] viewWithTag:textField.tag + 1];
+		[next becomeFirstResponder];
+	} else if (textField.returnKeyType == UIReturnKeyDone) {
+		[textField resignFirstResponder];
+	}
+	return YES;
+
 }
 
 - (void)setupContraints {
