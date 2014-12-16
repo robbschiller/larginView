@@ -19,6 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+	
 	// Step 1
 	CGRect windowFrame = [UIScreen mainScreen].bounds;
 	
@@ -32,6 +34,7 @@
 	[self.window makeKeyAndVisible];
 	
 	return YES;
+	
 }
 
 

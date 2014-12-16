@@ -30,22 +30,23 @@
 - (void)setupViews {
 
 	UIColor *colorWhite = [UIColor whiteColor];
-	self.view.backgroundColor = colorWhite;
+	UIColor *colorBlack = [UIColor blackColor];
+	self.view.backgroundColor = colorBlack;
 
-	// Username
+	// Username Text Field
 	self.usernameTextField = [[UITextField alloc] init];
 	self.usernameTextField.translatesAutoresizingMaskIntoConstraints = NO;
 	self.usernameTextField.borderStyle = UITextBorderStyleNone;
-	self.usernameTextField.backgroundColor = [UIColor grayColor];
+	self.usernameTextField.textColor = colorWhite;
 	self.usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
 	[self.view addSubview:self.usernameTextField];
 	
-	// Password
+	// Password Text Field
 	self.passwordTextField = [[UITextField alloc] init];
 	self.passwordTextField.translatesAutoresizingMaskIntoConstraints = NO;
 	self.passwordTextField.borderStyle = UITextBorderStyleNone;
-	self.passwordTextField.backgroundColor = [UIColor grayColor];
+	self.passwordTextField.textColor = colorWhite;
 	self.passwordTextField.secureTextEntry = YES;
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
@@ -55,8 +56,7 @@
 	self.loginButton = [[UIButton alloc] init];
 	self.loginButton.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
-	self.loginButton.backgroundColor = [UIColor grayColor];
-	
+
 	[self.view addSubview:self.loginButton];
 	
 }
