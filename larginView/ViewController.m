@@ -38,6 +38,8 @@
 	self.usernameTextField.translatesAutoresizingMaskIntoConstraints = NO;
 	self.usernameTextField.borderStyle = UITextBorderStyleNone;
 	self.usernameTextField.textColor = colorWhite;
+	self.usernameTextField.tag = 1;
+	self.usernameTextField.returnKeyType = UIReturnKeyNext;
 	self.usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
 	[self.view addSubview:self.usernameTextField];
@@ -48,6 +50,8 @@
 	self.passwordTextField.borderStyle = UITextBorderStyleNone;
 	self.passwordTextField.textColor = colorWhite;
 	self.passwordTextField.secureTextEntry = YES;
+	self.passwordTextField.tag = 2;
+	self.passwordTextField.returnKeyType = UIReturnKeyDone;
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: colorWhite}];
 	
 	[self.view addSubview:self.passwordTextField];
@@ -59,6 +63,18 @@
 
 	[self.view addSubview:self.loginButton];
 	
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+
+	if (textField.returnKeyType == UIReturnKeyNext) {
+		UIView *next = [[textField superview] viewWithTag:textField.tag + 1];
+		[next becomeFirstResponder];
+	} else if (textField.returnKeyType == UIReturnKeyDone) {
+		[textField resignFirstResponder];
+	}
+	return YES;
+
 }
 
 - (void)setupContraints {
